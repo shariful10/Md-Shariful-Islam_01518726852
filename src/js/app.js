@@ -56,7 +56,7 @@ function productShow(products) {
         <div class="product-cart">
           <figure>
             <img
-              src="${product?.image}"
+              src="${product?.img}"
               alt=""
             />
           </figure>
@@ -84,9 +84,9 @@ function productShow(products) {
           </div>
           
           ${
-					product?.itemComing
+					product?.badge
 						? `<span class="inline-block px-3 py-0 text-white bg-primary rounded-2xl absolute -top-1 -left-3 transform -rotate-45 uppercase text-sm">
-                ${product?.itemComing}
+                ${product?.badge}
               </span>`
 						: "<span class='hidden'></span"
 				}
@@ -103,11 +103,11 @@ function productShow(products) {
 
 // add to Cart
 function addToCartHandle(id) {
-	const product = productsObject.find((item) => item?.id === id);
+	const product = productsData.find((item) => item?.id === id);
 	if (product && id) {
 		addToCart.push({
 			id,
-			image: product?.image,
+			img: product?.img,
 			title: product?.title,
 			price: product?.price,
 			Piece: 1,
@@ -127,7 +127,7 @@ function showSidebarContent(products) {
               <figure class="w-[35%] h-full">
                 <img
                   class="w-full h-full object-cover"
-                  src="${product?.image}"
+                  src="${product?.img}"
                   alt=""
                 />
               </figure>
@@ -221,7 +221,7 @@ function ATCChange(id, value) {
 // re-call function
 function reCallFc() {
 	// show product function call
-	productShow(productsObject);
+	productShow(productsData);
 	showSidebarContent(addToCart);
 
 	// show add item
